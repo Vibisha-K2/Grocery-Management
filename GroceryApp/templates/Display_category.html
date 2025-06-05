@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends "Index.html" %}
+{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="col-lg-15 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Category Details</h4>
+
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Description</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                        {% for i in cats %}
+                        <tr>
+                            <td>{{i.Name}}</td>
+                             <td><img src="{{i.Profile.url}}" width="50px"></td>
+                             <td>{{i.Discription}}</td>
+
+                            <td>
+                                <a href="{% url 'edit_category' cat_id=i.id %}">
+                            <button class="btn btn-primary">Edit</button>
+                                </a>
+                           </td>
+                            <td>
+                                <a href="{% url 'delete_category' c_id=i.id %}">
+                            <button class="btn btn-danger">Delete</button>
+                                </a>
+                           </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

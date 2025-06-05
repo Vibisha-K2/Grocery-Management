@@ -1,0 +1,89 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'pay/css/style.css' %}">
+
+	</head>
+	<body class="img js-fullheight" style="background-image: url({% static 'pay/images/white save.jpg' %});">
+	<section class="ftco-section">
+		<div class="container">
+			<form method="post">
+			{% csrf_token %}
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h1 class="heading-section">Proceed To Payment</h1>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+<!--		      	<h3 class="mb-4 text-center">Have an account?</h3>-->
+						{% if request.session.User_name %}
+						<h5 style="text-align:center;color:white;">{{request.session.User_name}}</h5>
+						{% endif %}
+<!--		      	<form action="#" class="signin-form">-->
+<!--		      		<div class="form-group">-->
+<!--						-->
+<!--&lt;!&ndash;		      			<input type="text" class="form-control" placeholder="Username" required>&ndash;&gt;-->
+<!--		      		</div>-->
+<!--	            <div class="form-group">-->
+<!--	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>-->
+<!--	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>-->
+<!--	            </div>-->
+<!--	            <div class="form-group">-->
+<!--	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>-->
+<!--	            </div>-->
+<!--	            <div class="form-group d-md-flex">-->
+<!--	            	<div class="w-50">-->
+<!--		            	<label class="checkbox-wrap checkbox-primary">Remember Me-->
+<!--									  <input type="checkbox" checked>-->
+<!--									  <span class="checkmark"></span>-->
+<!--									</label>-->
+<!--								</div>-->
+<!--								<div class="w-50 text-md-right">-->
+<!--									<a href="#" style="color: #fff">Forgot Password</a>-->
+<!--								</div>-->
+<!--	            </div>-->
+<!--	          </form>-->
+<!--	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>-->
+	          <div class="social d-flex text-center fs-1" style="width:180px;margin-left:95px">
+	          	<button type="submit" style="margin-left:30px">Make Payment</button>
+<!--	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>-->
+	          </div>
+		      </div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</section>
+
+	<script src="{% static 'pay/js/jquery.min.js' %}"></script>
+  <script src="{% static 'pay/js/popper.js' %}"></script>
+  <script src="{% static 'pay/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'pay/js/main.js' %}"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"
+			data-key="rzp_test_mJFX2vCAoYiHq6"
+			data-amount="{{payy_str}}"
+			data-currency="INR"
+			data-order_id="{{payment.order_id}}"
+			data-buttontext=""
+			data-name="Grocery"
+			data-description="Your description"
+			data-image=""
+			data-prefill.name="abc"
+			data-prefill.email="abc@gmail.com"
+			data-theme.color="#4badeb">
+ 		</script>
+
+
+	</body>
+</html>
